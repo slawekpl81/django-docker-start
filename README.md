@@ -2,6 +2,7 @@
 Django project boilerplate
 
 Django project boilerplate with docker-compose
+DB: postgresql
 
 start app:
 docker-compose up --build -d
