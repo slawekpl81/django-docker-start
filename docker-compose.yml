@@ -1,0 +1,27 @@
+version: "3"
+services:
+        baza:
+                image: postgres
+                volumes:
+                        - dane_bazy:/var/lib/postgresql/data
+                environment:
+                        POSTGRES_USER: slawek
+                        POSTGRES_DB: mojabaza
+                        POSTGRES_PASSWORD: mojehaslo
+                networks:
+                        - baza-net
+
+        app:
+                build: .
+                image: django_img
+                networks:
+                        - baza-net
+                ports:
+                        - 8080:8080
+                depends_on: 
+                        - baza
+networks:
+        baza-net:
+
+volumes:
+        dane_bazy:
